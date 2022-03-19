@@ -1,14 +1,14 @@
 package com.example.ladm_u2_p1_copos_nieve
 
 import android.media.MediaPlayer
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import androidx.appcompat.app.AppCompatActivity
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     var intensidad=0
-    var tiempoDensidad = Random.nextLong(3000L)+7000L
+    var tiempoDensidad = Random.nextLong(3000L)+7000L //tiempo de intencidad de 3 a 10 segundos
     var mp:MediaPlayer?=null
 
     val timer = object : CountDownTimer(200000,tiempoDensidad){
@@ -30,8 +30,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setContentView(Lienzo(this))
         timer.start()
+
         mp= MediaPlayer.create(this,R.raw.cancionfondo)
         mp?.start()
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mp?.pause()
+    }
+
 }
