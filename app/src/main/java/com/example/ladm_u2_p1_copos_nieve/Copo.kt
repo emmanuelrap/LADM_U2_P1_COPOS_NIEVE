@@ -34,7 +34,7 @@ class Copo (l:Lienzo) {
     }
 
     fun moverRapido(){
-        y+=movY*6
+        y+=movY*8
     }
 
     fun pintar(canvas : Canvas){
